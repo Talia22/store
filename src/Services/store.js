@@ -6,5 +6,8 @@ const beautifyCategory = (name) => {
 }
 
 export function getProductDetails(category) {
+    if (category=== 'books')
+        return fetch(`http://localhost:8000/Books`);
     return fetch(`https://fakestoreapi.com/products/category/${beautifyCategory(category)}`)
 }
+
