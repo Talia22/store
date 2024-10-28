@@ -2,6 +2,7 @@ import React from 'react';
 import Styles from './HomeComp.module.css';
 
 const HomeComp = () => {
+    
     return (
         <div className={Styles.homeContainer}>
             <h1>Welcome to our Fake Store!</h1>

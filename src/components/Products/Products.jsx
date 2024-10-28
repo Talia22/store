@@ -4,7 +4,9 @@ import {getElectronicsProducts, getJeweleryProducts} from '../../Services/store.
 
 
 const Products = ({ProdItem}) => {
+
     const [products, setProducts] = useState([]);
+    
     useEffect(() => {
         if (ProdItem === "Jewelry") {
             getJeweleryProducts()
