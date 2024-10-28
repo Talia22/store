@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom';
-import { HomeComp, Products, Books} from './components'
+import { HomeComp, Products} from './components'
 
 
 function App() {
