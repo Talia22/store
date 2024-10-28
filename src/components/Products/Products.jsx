@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
 import Styles from './Products.module.css'
 import {getProductDetails} from '../../Services/store.js'
 
 const Products = ({category}) => {
-    console.log(category)
-    const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        getProductDetails(category)
-            .then((res) => res.json())
-            .then((data) => {setProducts(data);
-            });
-    },[category]);
+    const { data: products = [], isLoading, error } = useQuery(
+        [category],
+        () => getProductDetails(category).then(res => res.json()), 
+        { staleTime: 60000 } 
+    );
+
+    if (isLoading) return <div>Loading...</div>; 
+    if (error) return <div>Error fetching products</div>; 
+
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -38,11 +40,3 @@ const Products = ({category}) => {
 
 
 export default Products;
-
-
-
-
-
-
-
-

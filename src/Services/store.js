@@ -1,4 +1,4 @@
-const beautifyCategorie = (name) => {
+const beautifyCategory = (name) => {
     if (name === 'jewelry') {
         return 'jewelery'
     } 
@@ -6,5 +6,5 @@ const beautifyCategorie = (name) => {
 }
 
 export function getProductDetails(category) {
-    return fetch(`https://fakestoreapi.com/products/category/${beautifyCategorie(category)}`)
+    return fetch(`https://fakestoreapi.com/products/category/${beautifyCategory(category)}`)
 }
