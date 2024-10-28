@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className='App-header'>
-        <h1>Welcome to the store</h1>
+        <h1>Fake Store</h1>
       </header>
       <div className='container'>
         <div className='sideBar'>
