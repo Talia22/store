@@ -1,7 +1,10 @@
-export function getJeweleryProducts() {
-    return fetch('https://fakestoreapi.com/products/category/jewelery')
+const beautifyCategorie = (name) => {
+    if (name === 'jewelry') {
+        return 'jewelery'
+    } 
+    return name
 }
 
-export function getElectronicsProducts()  {
-    return fetch('https://fakestoreapi.com/products/category/electronics')
+export function getProductDetails(category) {
+    return fetch(`https://fakestoreapi.com/products/category/${beautifyCategorie(category)}`)
 }

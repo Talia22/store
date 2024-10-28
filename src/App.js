@@ -4,7 +4,7 @@ import { HomeComp, Products} from './components'
 
 
 function App() {
-  
+
   return (
     <div className="App">
       <header className='App-header'>
@@ -19,8 +19,8 @@ function App() {
         <div className='content'>
           <Routes>
             <Route path="/" element={<HomeComp />}></Route>
-            <Route path="/Jewelry" element={<Products ProdItem={"Jewelry"} />}></Route>
-            <Route path="/electronics" element ={<Products ProdItem = {"Electronics"} />}></Route>
+            <Route path="/Jewelry" element={<Products category={"jewelry"} />}></Route>
+            <Route path="/electronics" element ={<Products category = {"electronics"} />}></Route>
           </Routes>
         </div>
       </div>
