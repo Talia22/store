@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
 import Styles from './Products.module.css'
-import {getElectronicsProducts, getJeweleryProducts} from '../../Services/store.js'
+import {getProductDetails} from '../../Services/store.js'
+
+const Products = ({category}) => {
+
+    const { data: products = [], isLoading, error } = useQuery(
+        [category],
+        () => getProductDetails(category).then(res => res.json()), 
+        { staleTime: 60000 } 
+    );
+
+    if (isLoading) return <div>Loading...</div>; 
+    if (error) return <div>Error fetching products</div>; 
 
 
-const Products = ({ProdItem}) => {
-
-    const [products, setProducts] = useState([]);
-    
-    useEffect(() => {
-        if (ProdItem === "Jewelry") {
-            getJeweleryProducts()
-            .then((res) => res.json())
-            .then((data) => {setProducts(data);
-            });
-        } else {
-            getElectronicsProducts()
-            .then((res) => res.json())
-            .then((data) => {setProducts(data);
-            });
-        }
-    }, [ProdItem]);
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
 
 
     return (
     <div>
-        <h1>{ProdItem}</h1>
+        <h1>{capitalizeFirstLetter(category)}</h1>
         <div className={Styles.productsContainer}>
             {products.map(product => (
             <div key={product.id} className={Styles.product}>
@@ -42,11 +40,3 @@ const Products = ({ProdItem}) => {
 
 
 export default Products;
-
-
-
-
-
-
-
-
