@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom';
-import { HomeComp, Jewlery, Electronics } from './components'
+import { HomeComp, Products} from './components'
 
 
 function App() {
@@ -12,14 +12,14 @@ function App() {
       <div className='container'>
         <div className='sideBar'>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/jewlery">Jewlery</Link></li>
+          <li><Link to="/Jewelry">Jewelry</Link></li>
           <li><Link to="/electronics">Electronics</Link></li>
         </div>
         <div className='content'>
           <Routes>
             <Route path="/" element={<HomeComp />}></Route>
-            <Route path="/jewlery" element={<Jewlery />}></Route>
-            <Route path="/electronics" element ={<Electronics />}></Route>
+            <Route path="/Jewelry" element={<Products ProdItem={"Jewelry"} />}></Route>
+            <Route path="/electronics" element ={<Products ProdItem = {"Electronics"} />}></Route>
           </Routes>
         </div>
       </div>

@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import Styles from './Electronics.module.css'
-import {getElectronicsProducts} from '../../Services/store.js'
+import Styles from './Products.module.css'
+import {getElectronicsProducts, getJeweleryProducts} from '../../Services/store.js'
 
 
-const Electronics = () => {
+const Products = ({ProdItem}) => {
     const [products, setProducts] = useState([]);
-
     useEffect(() => {
-        getElectronicsProducts()
-            .then(res => res.json())
-            .then(data => setProducts(data));
-        }, []);
+        if (ProdItem === "Jewelry") {
+            getJeweleryProducts()
+            .then((res) => res.json())
+            .then((data) => {setProducts(data);
+            });
+        } else {
+            getElectronicsProducts()
+            .then((res) => res.json())
+            .then((data) => {setProducts(data);
+            });
+        }
+    }, [ProdItem]);
+
 
     return (
     <div>
-        <h1>Electronics</h1>
+        <h1>{ProdItem}</h1>
         <div className={Styles.productsContainer}>
             {products.map(product => (
             <div key={product.id} className={Styles.product}>
@@ -31,7 +39,7 @@ const Electronics = () => {
 };
 
 
-export default Electronics;
+export default Products;
 
 
 
